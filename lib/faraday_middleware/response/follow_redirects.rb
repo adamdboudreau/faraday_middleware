@@ -106,7 +106,7 @@ module FaradayMiddleware
 
     def keep_cookies(env)
       cookies = @options.fetch(:cookies, [])
-      response_cookies = override_existing_cookies(env[:response_headers][:cookies])
+      response_cookies = override_existing_cookies(env[:response_headers]['set-cookie'])
       cookies == :all ? response_cookies : selected_request_cookies(response_cookies)
     end
 
